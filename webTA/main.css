@@ -1,0 +1,622 @@
+/* Main CSS file with forced light mode - no media query to ensure styles apply regardless of system preferences */
+
+/* Global rule to force light mode on all elements */
+* {
+    color-scheme: light !important;
+}
+
+/* Base styling */
+.block-container {
+    padding: 0.5em 1em 0.5em 1em !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* App background - always light */
+.stApp {
+    background: linear-gradient(135deg, #e3f0ff 0%, #f9f6ff 100%) !important;
+    padding: 0.5rem;
+}
+
+/* Add translucent backgrounds to content elements */
+.stMarkdown, .element-container, [data-testid="stVerticalBlock"] > div > div {
+    background: transparent !important;
+    border-radius: 0 !important;
+}
+
+/* Add translucent background to specific markdown content */
+.stMarkdown > div:has(h2), .stMarkdown > div:has(h3) {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Make dataframes and tables translucent */
+.stDataFrame, .dataframe, [data-testid="stTable"] {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-radius: 8px !important;
+    padding: 0.5rem !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+}
+
+/* Keep table internals transparent and fix table width */
+.stDataFrame table, .dataframe table, [data-testid="stTable"] table {
+    background: transparent !important;
+    width: 100% !important;
+    table-layout: auto !important;
+}
+
+/* Make table cells fit content properly */
+.stDataFrame div, .dataframe div, [data-testid="stTable"] div {
+    background: transparent !important;
+    width: 100% !important;
+}
+
+/* Style table headers and cells */
+th, td, tr {
+    background-color: transparent !important;
+    padding: 6px 10px !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    max-width: 200px !important;
+    overflow: hidden !important;
+}
+
+/* Special handling for sentiment distribution tables */
+.sentiment-table-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    margin-bottom: 1rem !important;
+    padding: 0 !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-radius: 8px !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+}
+
+/* Ensure tables inside containers fit properly */
+.sentiment-table-container [data-testid="stTable"],
+.sentiment-table-container [data-testid="stDataFrame"] {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0.5rem !important;
+    width: 100% !important;
+}
+
+/* Table structure */
+[data-testid="stTable"] table,
+[data-testid="stDataFrame"] table {
+    table-layout: fixed !important;
+    width: 100% !important;
+    min-width: 250px !important;
+}
+
+/* Make sentiment cells fit content better */
+[data-testid="stTable"] td,
+[data-testid="stDataFrame"] td {
+    font-size: 0.85rem !important;
+    padding: 4px 6px !important;
+}
+
+/* Style table structure */
+table {
+    border: none !important;
+    background: transparent !important;
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin: 0 !important;
+    font-size: 0.9rem !important;
+}
+
+/* Add subtle borders between rows */
+tr:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Style alternating rows */
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Remove backgrounds from all cards and containers */
+.css-1r6slb0, .css-1vq4p4l, .css-12w0qpk, .css-18ni7ap, .css-1dp5vir,
+.st-emotion-cache-18ni7ap, .st-emotion-cache-1dp5vir, .st-emotion-cache-1r6slb0, 
+.st-emotion-cache-1vq4p4l, .st-emotion-cache-12w0qpk, .st-emotion-cache-1wbqy5e,
+[class*="st-emotion-cache-"], [class*="css-"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Add translucent backgrounds to charts */
+.stPlotlyChart {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 0.8rem !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+    margin: 1rem 0 !important;
+}
+
+/* Keep chart internals transparent */
+.stPlotlyChart > div, .stPlotlyChart svg,
+.js-plotly-plot, .plotly, .plot-container {
+    background: transparent !important;
+}
+
+/* Add translucent background to sidebar */
+[data-testid="stSidebar"] {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-right: 1px solid rgba(126, 87, 194, 0.2) !important;
+}
+
+/* Add translucent background to expanders */
+.streamlit-expanderHeader {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+}
+
+.streamlit-expanderContent {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 0 0 8px 8px !important;
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
+    padding: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Keep other elements transparent */
+.element-container, .stVerticalBlock, .block-container, .stBlock {
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Header container */
+.header-container {
+    background: linear-gradient(90deg, #42a5f5, #7e57c2) !important;
+    padding: 1.2rem;
+    border-radius: 12px;
+    margin: 0.5rem 0 1rem 0;
+    box-shadow: 0 4px 12px rgba(66, 165, 245, 0.12) !important;
+}
+
+.header-container h1 {
+    color: #fff !important;
+    text-align: center;
+    margin: 0;
+    font-size: 2.2rem;
+    text-shadow: 1px 2px 8px rgba(66, 165, 245, 0.15);
+}
+
+/* Text colors */
+h1, h2, h3, h4, h5, h6, .section-container h3, .section-container h4, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown h5, .stMarkdown h6 {
+    color: #1565C0 !important;
+    background: none !important;
+    border: none !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.7rem !important;
+    border-radius: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+h2, h3 {
+    border-bottom: 1px solid #1E88E5 !important;
+    padding-bottom: 0.25rem;
+    margin: 1rem 0 0.5rem 0 !important;
+    font-size: 1.3rem;
+}
+
+/* Section containers - translucent background */
+.section-container {
+    background: rgba(255, 255, 255, 0.3) !important;
+    padding: 1.2rem;
+    margin: 1.2rem 0;
+    border-left: 3px solid #7e57c2 !important;
+    color: #333 !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Best model container */
+.best-model-container {
+    background: linear-gradient(90deg, #e3ffe6 0%, #e3f0ff 100%) !important;
+    padding: 1.2rem;
+    border-radius: 12px;
+    border-left: 6px solid #43a047 !important;
+    margin: 1.2rem 0;
+    box-shadow: 0 2px 8px rgba(67, 160, 71, 0.08) !important;
+    color: #333 !important;
+}
+
+/* Table container */
+.table-container {
+    background: linear-gradient(90deg, #fff 60%, #e3f0ff 100%) !important;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(66, 165, 245, 0.08) !important;
+    margin: 0.7rem 0;
+    color: #333 !important;
+}
+
+/* Markdown */
+.stMarkdown {
+    background: white !important;
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+    margin: 0.15rem 0;
+    box-shadow: 0 1px 4px rgba(66, 165, 245, 0.08) !important;
+    color: #333 !important;
+}
+
+/* Plotly plots */
+.js-plotly-plot {
+    background: white !important;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(66, 165, 245, 0.10) !important;
+    padding: 0.7rem;
+    margin: 0.7rem 0;
+    max-height: 220px !important;
+    margin-bottom: 0.25rem !important;
+}
+
+/* Wordcloud container */
+.wordcloud-container {
+    background: white !important;
+    padding: 0.7rem 0 0.7rem 0;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(66, 165, 245, 0.08) !important;
+    margin: 0.7rem auto;
+    text-align: center;
+    max-width: 98%;
+}
+
+/* Sidebar */
+.stSidebar {
+    background: linear-gradient(135deg, #e3f0ff 0%, #ede7f6 100%) !important;
+}
+
+/* Radio buttons */
+.stRadio > div {
+    background: #fff !important;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(66, 165, 245, 0.08) !important;
+    padding: 0.5rem 0.7rem;
+}
+
+/* Style for horizontal radio buttons */
+div[data-testid="stRadio"] > div {
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+}
+
+div[data-testid="stRadio"] > div > div {
+    min-width: 60px !important;
+    padding: 0.2rem 0.5rem !important;
+    font-size: 0.8rem !important;
+    background-color: #f0f2f6 !important;
+    border-radius: 4px !important;
+    margin: 0 !important;
+    text-align: center !important;
+}
+
+div[data-testid="stRadio"] > div > div[data-checked="true"] {
+    background-color: #1565C0 !important;
+    color: white !important;
+}
+
+/* Hide the radio button circles */
+div[data-testid="stRadio"] > div > div > div {
+    display: none !important;
+}
+
+.stRadio label {
+    font-weight: 600;
+    color: #7e57c2;
+}
+
+/* DataFrames and Tables */
+.stDataFrame table, table, .dataframe, .table {
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.stDataFrame th, .stDataFrame td {
+    padding: 6px 10px !important;
+}
+
+.stDataFrame th {
+    background: linear-gradient(90deg, #42a5f5 60%, #7e57c2 100%);
+    color: white !important;
+    font-weight: 700;
+}
+
+.stDataFrame td, table td {
+    background: #f3f7fa !important;
+    color: #333 !important;
+}
+
+/* Force table elements to have light colors */
+table, tr, td, th {
+    color: #333 !important;
+    border-color: #e1e4e8 !important;
+}
+
+/* Tabs */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 1.2rem;
+    margin: 0.7rem 0;
+}
+
+.stTabs [data-baseweb="tab"] {
+    padding: 0.7rem 1.3rem;
+    background: linear-gradient(90deg, #e3f0ff 60%, #ede7f6 100%) !important;
+    border-radius: 8px;
+    color: #7e57c2 !important;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.stTabs [aria-selected="true"] {
+    background: linear-gradient(90deg, #7e57c2 60%, #42a5f5 100%) !important;
+    color: white !important;
+}
+
+.stTabs [role="tabpanel"] {
+    padding: 0.75rem 0;
+}
+
+/* Buttons */
+.stButton>button {
+    background: linear-gradient(90deg, #42a5f5, #7e57c2) !important;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0.3rem 0;
+    box-shadow: 0 2px 8px rgba(66, 165, 245, 0.10);
+    transition: 0.2s;
+}
+
+.stButton>button:hover {
+    background: linear-gradient(90deg, #7e57c2, #42a5f5) !important;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 16px rgba(126, 87, 194, 0.15);
+}
+
+/* Text color for paragraphs and other text elements */
+p, li, span, div, .stMarkdown p, .stMarkdown li, .stMarkdown span, .stMarkdown div, .element-container, .stText, .stText > div, .stText p {
+    color: #333 !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1 !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0073e6 !important;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #005bb5 !important;
+}
+
+/* Force all text elements to have light mode colors */
+.stApp, .stApp div, .stApp p, .stApp span, .stApp li, .stApp a, .stApp label, .stApp td, .stApp th,
+.stText, .stText p, .stText div, .stText span,
+.stMarkdown, .stMarkdown p, .stMarkdown div, .stMarkdown span,
+.stDataFrame, .stDataFrame div, .stDataFrame span,
+.element-container, .element-container div, .element-container p, .element-container span,
+.stTabs, .stTabs div, .stTabs p, .stTabs span,
+.stSelectbox, .stSelectbox div, .stSelectbox span,
+.stMultiselect, .stMultiselect div, .stMultiselect span,
+.stRadio, .stRadio div, .stRadio span,
+.stCheckbox, .stCheckbox div, .stCheckbox span,
+.stExpander, .stExpander div, .stExpander p, .stExpander span,
+.stTextInput, .stTextInput div, .stTextInput span,
+.stTextArea, .stTextArea div, .stTextArea span,
+.stButton, .stButton div, .stButton span,
+.stDownloadButton, .stDownloadButton div, .stDownloadButton span,
+.stFileUploader, .stFileUploader div, .stFileUploader span,
+.stSlider, .stSlider div, .stSlider span,
+.stDateInput, .stDateInput div, .stDateInput span,
+.stTimeInput, .stTimeInput div, .stTimeInput span,
+.stNumberInput, .stNumberInput div, .stNumberInput span,
+.stMetric, .stMetric div, .stMetric span,
+.stProgress, .stProgress div, .stProgress span,
+.stTooltip, .stTooltip div, .stTooltip span,
+.stAlert, .stAlert div, .stAlert span,
+.stSuccess, .stSuccess div, .stSuccess span,
+.stInfo, .stInfo div, .stInfo span,
+.stWarning, .stWarning div, .stWarning span,
+.stError, .stError div, .stError span,
+.stException, .stException div, .stException span,
+.stSpinner, .stSpinner div, .stSpinner span,
+.stBalloon, .stBalloon div, .stBalloon span,
+.stWidgetLabel, .stWidgetLabel div, .stWidgetLabel span {
+    color: #333 !important;
+}
+
+/* Force all backgrounds to be light */
+.stApp, .stApp div[data-testid="stAppViewContainer"], .stApp section, .stApp .main,
+.st-emotion-cache-*, div[class*="st-emotion-cache-"], span[class*="st-emotion-cache-"],
+.css-*, div[class*="css-"], span[class*="css-"] {
+    background: linear-gradient(135deg, #e3f0ff 0%, #f9f6ff 100%) !important;
+    color: #333 !important;
+}
+
+/* Target specific Streamlit emotion cache classes that might be in dark mode */
+.st-emotion-cache-1gulkj5, .st-emotion-cache-16txtl3, .st-emotion-cache-4oy321,
+.st-emotion-cache-1n76uvr, .st-emotion-cache-1wmy9hl, .st-emotion-cache-1v0mbdj,
+.st-emotion-cache-1vbkxwb, .st-emotion-cache-10trblm, .st-emotion-cache-183lzff,
+.st-emotion-cache-ocqkz7, .st-emotion-cache-1gul9hv {
+    color: #333 !important;
+    background: transparent !important;
+}
+
+/* Target navbar */
+.st-emotion-cache-6qob1r, .st-emotion-cache-ue6h4q, .st-emotion-cache-79elbk,
+.st-emotion-cache-1dp5vir, .st-emotion-cache-1avcm0n, .st-emotion-cache-18ni7ap,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1v0mbdj, .st-emotion-cache-1wbqy5e,
+.st-emotion-cache-1egp7eo, .st-emotion-cache-1qg05tj, .st-emotion-cache-1okhd7f,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj {
+    background-color: #f0f2f6 !important;
+    color: #333 !important;
+}
+
+/* Target dropdowns and selectboxes */
+.st-emotion-cache-1nzn7i, .st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-16idsys, .st-emotion-cache-16idsys > div,
+.st-emotion-cache-1aumxhk, .st-emotion-cache-1aumxhk > div,
+.st-emotion-cache-b0qme5, .st-emotion-cache-b0qme5 > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div {
+    background-color: #f0f2f6 !important;
+    color: #333 !important;
+}
+
+/* Target tables */
+table, thead, tbody, tr, th, td,
+.stDataFrame table, .stDataFrame thead, .stDataFrame tbody, .stDataFrame tr,
+.st-emotion-cache-1nvk21a, .st-emotion-cache-1nvk21a > div,
+.st-emotion-cache-1n76uvr, .st-emotion-cache-1n76uvr > div,
+.st-emotion-cache-1wbqy5e, .st-emotion-cache-1wbqy5e > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div,
+.st-emotion-cache-1qg05tj, .st-emotion-cache-1qg05tj > div {
+    background-color: #f3f7fa !important;
+    color: #333 !important;
+    border-color: #e1e4e8 !important;
+}
+
+/* Additional styling */
+.main .block-container {
+    max-width: 1100px;
+    padding: 1rem 0.5rem;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.element-container {
+    margin: 0.5rem 0;
+}
+
+.model-results-table {
+    width: 100%;
+    margin: 0.5rem 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.model-results-table th {
+    background-color: #E3F2FD;
+    color: #1565C0;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.model-results-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid #E3F2FD;
+}
+
+/* Add gap between columns and sections */
+.stColumns, .stColumn {
+    gap: 0.25rem !important;
+}
+
+img, .wordcloud-container img {
+    max-height: 120px !important;
+    height: auto !important;
+    margin-bottom: 0.25rem !important;
+}
+
+.row-widget.stHorizontal {
+    gap: 1rem;
+}
+
+.stSpinner, .stSuccess, .stError, .stFileUploader {
+    margin: 0.5rem 0;
+}
+
+/* Force white color for all page headers inside .header-container, override all */
+.header-container h1, .header-container > h1 {
+    color: #fff !important;
+    text-shadow: 1px 2px 8px rgba(66, 165, 245, 0.15);
+}
